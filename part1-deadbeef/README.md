@@ -40,6 +40,6 @@ Stop after sometime and examine the registers ``info registers``
 
 
 ### References
-https://vivonomicon.com/2018/04/02/bare-metal-stm32-programming-part-1-hello-arm/
-https://www.st.com/content/ccc/resource/technical/document/programming_manual/6c/3a/cb/e7/e4/ea/44/9b/DM00046982.pdf/files/DM00046982.pdf/jcr:content/translations/en.DM00046982.pdf
-    See section about Vector table
+[1] https://vivonomicon.com/2018/04/02/bare-metal-stm32-programming-part-1-hello-arm/  
+[2] https://www.st.com/content/ccc/resource/technical/document/programming_manual/6c/3a/cb/e7/e4/ea/44/9b/DM00046982.pdf/files/DM00046982.pdf/jcr:content/translations/en.DM00046982.pdf  
+    - See section about Vector table
