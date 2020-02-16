@@ -26,6 +26,18 @@ Commands to build:
     -T./stm32_base.ld => Linker script to be used  
     -o main.elf => Output elf that can be loaded to mcu  
 
+#### Load
+Install stlink utility from https://github.com/texane/stlink/blob/master/doc/tutorial.md  
+[Optional] Copy binaries to /usr/local/bin and libs to /usr/local/lib  
+[If above step is performed] ``ldconfig``  
+Start gdb server using ``st-util``  
+Start gdb using ``arm-none-eabi-gdb <elf>``  
+Connect to gdb server ``target extended localhost:4242``  
+Load the elf ``load <elf>``  
+Run program ``r`` 
+Stop after sometime and examine the registers ``info registers``
+
+
 
 ### References
 https://vivonomicon.com/2018/04/02/bare-metal-stm32-programming-part-1-hello-arm/
