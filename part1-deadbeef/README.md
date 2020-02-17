@@ -18,7 +18,7 @@ Commands to build:
     -o main.o => Output object file  
 
 #### Link
-- arm-none-eabi-gcc main.o -mcpu=cortex-m4 -mthumb -Wall -nostdlib -lgcc -T./stm32_base.ld -o main.elf
+- arm-none-eabi-gcc main.o -mcpu=cortex-m4 -mthumb -Wall -nostdlib -lgcc -T./stm32_sections_only.ld -o main.elf
     
     main.o => Input object file  
     -nostdlib => do not link with the C std lib  
@@ -34,8 +34,8 @@ Start gdb server using ``st-util``
 Start gdb using ``arm-none-eabi-gdb <elf>``  
 Connect to gdb server ``target extended localhost:4242``  
 Load the elf ``load <elf>``  
-Run program ``r`` 
-Stop after sometime and examine the registers ``info registers``
+Run program ``r``   
+Stop after sometime ``ctrl+c`` and examine the registers ``info registers`` you should see deadbeef at r7
 
 
 
@@ -44,4 +44,6 @@ Stop after sometime and examine the registers ``info registers``
 [2] https://www.st.com/content/ccc/resource/technical/document/programming_manual/6c/3a/cb/e7/e4/ea/44/9b/DM00046982.pdf/files/DM00046982.pdf/jcr:content/translations/en.DM00046982.pdf  
     - See section about Vector table  
 [3] https://www.mikrocontroller.net/articles/ARM-ASM-Tutorial#Writing_assembly_applications  
-    - See section titled 'Defining symbols in linker scripts'
+    - See section titled 'Defining symbols in linker scripts'  
+[4] https://sourceware.org/binutils/docs/ld/Scripts.html  
+    - Complete information about linker scripts
