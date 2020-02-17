@@ -46,4 +46,6 @@ Stop after sometime ``ctrl+c`` and examine the registers ``info registers`` you 
 [3] https://www.mikrocontroller.net/articles/ARM-ASM-Tutorial#Writing_assembly_applications  
     - See section titled 'Defining symbols in linker scripts'  
 [4] https://sourceware.org/binutils/docs/ld/Scripts.html  
-    - Complete information about linker scripts
+    - Complete information about linker scripts, see important links below  
+    - https://sourceware.org/binutils/docs/ld/MEMORY.html#MEMORY  
+    - https://sourceware.org/binutils/docs/ld/Simple-Example.html#Simple-Example  
