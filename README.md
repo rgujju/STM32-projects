@@ -8,7 +8,8 @@ but should be portable to any other STM32 mcu
 #### References
 - General Embedded systems
   - https://www.coursera.org/learn/introduction-embedded-systems
-    - Excellent cource about embedded systems. Not using high level IDE and stuff. In parallel check out the section on understanding ELF.
+    - Excellent cource about embedded systems. Not using high level IDE and stuff. In parallel check out the section on understanding ELF.  
+  - https://www.coursera.org/learn/embedded-software-hardware
 
 - Understanding ELF files and some basic tools to analyze them
     - https://www.youtube.com/watch?v=xkD2NyRpvI4 
