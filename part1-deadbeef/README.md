@@ -13,7 +13,7 @@ Commands to build:
     -O0 => Optimization level to 0  
     -mcpu=cortex-m4 => Use the cortex-m4 cpu  
     -mthumb => Use thumb instruction set  
-    -Wall => Treat all warnings as errors  
+    -Wall => Show more warnings  
     main.S => Input assembly file  
     -o main.o => Output object file  
 
@@ -48,4 +48,5 @@ Stop after sometime ``ctrl+c`` and examine the registers ``info registers`` you 
 [4] https://sourceware.org/binutils/docs/ld/Scripts.html  
     - Complete information about linker scripts, see important links below  
     - https://sourceware.org/binutils/docs/ld/MEMORY.html#MEMORY  
+    - https://sourceware.org/binutils/docs/ld/SECTIONS.html#SECTIONS
     - https://sourceware.org/binutils/docs/ld/Simple-Example.html#Simple-Example  
