@@ -20,5 +20,5 @@ but should be portable to any other STM32 mcu
       - Teaches about readelf and hexdump, objdump -d (disassembly)
     - https://linux-audit.com/elf-binaries-on-linux-understanding-and-analysis/
  
- - STM32 specific
-  - https://leanpub.com/mastering-stm32
+- STM32 specific  
+    - https://leanpub.com/mastering-stm32
