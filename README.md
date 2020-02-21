@@ -19,3 +19,6 @@ but should be portable to any other STM32 mcu
       - A couple of lectures of this course are related to elf From Day2P18 to Day2P28
       - Teaches about readelf and hexdump, objdump -d (disassembly)
     - https://linux-audit.com/elf-binaries-on-linux-understanding-and-analysis/
+ 
+ - STM32 specific
+  - https://leanpub.com/mastering-stm32
