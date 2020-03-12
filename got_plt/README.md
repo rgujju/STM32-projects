@@ -72,7 +72,7 @@ access to global data will be as offsets in the GOT. The offsets will be added t
 | 800005e | r3 contains #7 |
 | 8000060 | store data in r3 to r2+0 ie ``20000018`` |
 
-The call library_function is a direct branch call to its address.
+The call to ``library_function`` is a direct branch call to its address.
 
 The compiled objects like main.o contains the relocation information [3] which will be used by the linker to patch the GOT entries.
 
@@ -90,7 +90,7 @@ Relocation section '.rel.text' at offset 0x4fc contains 5 entries:
 ```
 
 The offset here matches the offset in the disassembly which just contains zeros. See offset 1e, 2c,30,34 and 38 below. 
-The call to library_function is a direct call to its address. (which is also 0 and to be patched by linker)
+The call to ``library_function`` is a direct call to its address. (which is also 0 and to be patched by linker)
 
 
 ```
