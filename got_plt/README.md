@@ -62,13 +62,15 @@ unsigned int x;
 The instructions at ``8000054`` and ``8000056`` will load the address of the GOT into register r4 and then the subsequent 
 access to global data will be as offsets in the GOT. The offsets will be added to the value in the register r4 as shown below.
 
-8000054-----load data at address ``800007c`` into r4. (pc (instruction address + 4) + #36(0x24) = 800007c) so r4 contains ``17ffffa6``  
-8000056-----add pc to r4, so r4 contains ``20000000``, which is the base of the GOT  
-8000058-----r3 contains data at ``8000080`` ie ``00000000`` which is the offset of x in the GOT  
-800005a-----load data at r4+r3 into r3. ie load data at (20000000+00000000) which is ``20000018`` into r3.  
-800005c-----r2 contains ``20000018``  
-800005e-----r3 contains #7  
-8000060-----store data in r3 to r2+0 ie ``20000018``  
+| Intruction | Description |
+| --- | --- |
+| 8000054 | load data at address ``800007c`` into r4. (pc (instruction address + 4) + #36(0x24) = 800007c) so r4 contains ``17ffffa6`` |
+| 8000056 | add pc to r4, so r4 contains ``20000000``, which is the base of the GOT |
+| 8000058 | r3 contains data at ``8000080`` ie ``00000000`` which is the offset of x in the GOT |
+| 800005a | load data at r4+r3 into r3. ie load data at (20000000+00000000) which is ``20000018`` into r3. |
+| 800005c | r2 contains ``20000018`` |
+| 800005e | r3 contains #7 |
+| 8000060 | store data in r3 to r2+0 ie ``20000018`` |
 
 The call library_function is a direct branch call to its address.
 
