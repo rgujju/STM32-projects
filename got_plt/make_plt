@@ -1,7 +1,7 @@
 rm -rf boot.o so.o fun.o so.elf so.srec so.list so.bin
 arm-none-eabi-as -g -mcpu=cortex-m4 -mthumb --warn  boot.s -o boot.o
 arm-none-eabi-gcc -g -Wall -O0 -fpic -mcpu=cortex-m4 -mthumb -c so.c -o so.o
-arm-none-eabi-gcc -g -shared -Wall -O0 -fpic -mcpu=cortex-m4 -mthumb -c fun.c -o libfun.so
+arm-none-eabi-gcc -g -shared -Wall -O0 -fpic -mcpu=cortex-m4 -mthumb fun.c -o libfun.so
 arm-none-eabi-ld -g -o so.elf -T flash.ld boot.o so.o -shared -L. -lfun
 arm-none-eabi-objdump -D so.elf > so.list
 arm-none-eabi-objcopy --srec-forceS3 so.elf -O srec so.srec
