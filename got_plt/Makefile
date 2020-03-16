@@ -68,6 +68,7 @@ DLIB_CFLAGS += -mcpu=$(MCU_SPEC)
 DLIB_CFLAGS += -mthumb
 DLIB_CFLAGS += -Wall
 DLIB_CFLAGS += -g
+DLIB_CFLAGS += -fPIC
 DLIB_CFLAGS += -fmessage-length=0
 DLIB_CFLAGS += --specs=nosys.specs
 
