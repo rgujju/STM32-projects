@@ -10,5 +10,5 @@ then it is stored on the stack.
 - Check disassembly using ``arm-none-eabi-objdump -d --source main.o``
 
 ### References
-[1] https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/function-parameters-on-32-bit-arm  
-[2] https://developer.arm.com/docs/ihi0042/latest  
+1. https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/function-parameters-on-32-bit-arm  
+2. https://developer.arm.com/docs/ihi0042/latest  
