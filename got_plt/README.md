@@ -196,7 +196,7 @@ int main ( void )
 |  800010c-8000114 | branch to the value at address ``2000009a``, which contains ``00000000`` currently. |
 
 
-The problem with ``0800010c``:
+- The problem with ``0800010c``:
 
    In ARM cortex-M architecture when interworking addresses (bx & blx or ldr & ldm when loading a pc-relative value) are used for branches  
    the lowest bit is to be set to 1, to indicate thumb state else a INVSTATE fault will be generated [7]. The generated instruction ``0800010c``  
