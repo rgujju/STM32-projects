@@ -3,7 +3,8 @@
 
 The ARM Procedure Call standard states that for a function call
 The arguments are stored in r0,r1,r2,r3 and if there are more than that
-then it is stored on the stack.
+then it is stored on the stack. The return value of the function is stored
+in r0.
 
 #### Commands to build:
 - Make objcode ``make``  

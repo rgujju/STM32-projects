@@ -226,4 +226,4 @@ section. As a consequence the location of variables were not accurate.
    - Information on debugging faults  
 8. https://community.arm.com/developer/ip-products/processors/f/cortex-m-forum/45919/gcc-does-not-generate-correct-code-while-building-pic  
 9. https://answers.launchpad.net/gcc-arm-embedded/+question/689355  
-
+10. https://stackoverflow.com/questions/50655162/stm32-position-independent-binaries/50701832#50701832  
