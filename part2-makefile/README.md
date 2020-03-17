@@ -8,12 +8,12 @@ Makefile will basically run the commands we used to build the previous project a
 ``make all``
 
 ### References
-[1] https://makefiletutorial.com/  
-	- Excellent step by step tutorial for make  
-[2] http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/  
-	- A more simpler tutorial  
-[2] https://www.gnu.org/software/make/manual/make.html  
-	- Complete make documentation  
-[3] https://stackoverflow.com/questions/16931770/makefile4-missing-separator-stop  
-	- A solution to a common error  
+1. https://makefiletutorial.com/  
+   - Excellent step by step tutorial for make  
+2. http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/  
+   - A more simpler tutorial  
+3. https://www.gnu.org/software/make/manual/make.html  
+   - Complete make documentation  
+4. https://stackoverflow.com/questions/16931770/makefile4-missing-separator-stop  
+   - A solution to a common error  
 
