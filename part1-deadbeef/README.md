@@ -40,13 +40,13 @@ Stop after sometime ``ctrl+c`` and examine the registers ``info registers`` you 
 
 
 ### References
-[1] https://vivonomicon.com/2018/04/02/bare-metal-stm32-programming-part-1-hello-arm/  
-[2] https://www.st.com/content/ccc/resource/technical/document/programming_manual/6c/3a/cb/e7/e4/ea/44/9b/DM00046982.pdf/files/DM00046982.pdf/jcr:content/translations/en.DM00046982.pdf  
-    - See section about Vector table  
-[3] https://www.mikrocontroller.net/articles/ARM-ASM-Tutorial#Writing_assembly_applications  
-    - See section titled 'Defining symbols in linker scripts'  
-[4] https://sourceware.org/binutils/docs/ld/Scripts.html  
-    - Complete information about linker scripts, see important links below  
-    - https://sourceware.org/binutils/docs/ld/MEMORY.html#MEMORY  
-    - https://sourceware.org/binutils/docs/ld/SECTIONS.html#SECTIONS
-    - https://sourceware.org/binutils/docs/ld/Simple-Example.html#Simple-Example  
+1. https://vivonomicon.com/2018/04/02/bare-metal-stm32-programming-part-1-hello-arm/  
+2. https://www.st.com/content/ccc/resource/technical/document/programming_manual/6c/3a/cb/e7/e4/ea/44/9b/DM00046982.pdf/files/DM00046982.pdf/jcr:content/translations/en.DM00046982.pdf  
+   - See section about Vector table  
+3. https://www.mikrocontroller.net/articles/ARM-ASM-Tutorial#Writing_assembly_applications  
+   - See section titled 'Defining symbols in linker scripts'  
+4. https://sourceware.org/binutils/docs/ld/Scripts.html  
+   - Complete information about linker scripts, see important links below  
+   - https://sourceware.org/binutils/docs/ld/MEMORY.html#MEMORY  
+   - https://sourceware.org/binutils/docs/ld/SECTIONS.html#SECTIONS
+   - https://sourceware.org/binutils/docs/ld/Simple-Example.html#Simple-Example  
