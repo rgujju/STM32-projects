@@ -198,10 +198,10 @@ int main ( void )
 
 - The problem with ``0800010c``:
 
-   In ARM cortex-M architecture when interworking addresses (bx & blx or ldr & ldm when loading a pc-relative value) are used for branches  
-   the lowest bit is to be set to 1, to indicate thumb state else a INVSTATE fault will be generated [7]. The generated instruction ``0800010c``  
-   has its last bit as 0 which causes a fault at instruction ``8000114``. This maybe a bug in the gcc compiler [8] [9]. If I change ``0800010c``  
-   to ``0800010d`` using a hex editor then the branch works and we end up at ``00000000``.  
+   In ARM cortex-M architecture when interworking addresses (bx & blx or ldr & ldm when loading a pc-relative value) are used for branches
+   the lowest bit is to be set to 1, to indicate thumb state else a INVSTATE fault will be generated [7]. The generated instruction ``0800010c``
+   has its last bit as 0 which causes a fault at instruction ``8000114``. This maybe a bug in the gcc compiler [8] [9]. If I change ``0800010c``
+   to ``0800010d`` using a hex editor then the branch works and we end up at ``00000000``.
    
 ### Notes
 - In addition to the change in output sections in the linker script, the method for getting the ``_sidata`` global variable is changed. 
@@ -211,19 +211,19 @@ section. As a consequence the location of variables were not accurate.
 
 ### References
 [1] https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries  
-		This is probably the holy grail of pic.
+		This is probably the holy grail of pic.  
 [2] http://infocenter.arm.com/help/topic/com.arm.doc.dai0242a/DAI0242A_dynamic_linking_with_rvct.pdf  
-		Explains what dynamic linking is and some details on how to implement it
+		Explains what dynamic linking is and some details on how to implement it  
 [3] https://static.docs.arm.com/ihi0044/f/IHI0044F_aaelf.pdf  
-		ARM ELF specification. This document contains all the details about the ARM elf like relocation types, etc.
-[4] https://www.airs.com/blog/archives/38
-		20 part series on how linkers work
-[5] https://stackoverflow.com/a/50701832
-		Minimal example of creating GOT. Does not have PLT.
-[6] http://www.chibios.com/forum/viewtopic.php?f=3&t=1229
-		Explains different ways to achive dynamic module loading
-[7] https://interrupt.memfault.com/blog/cortex-m-fault-debug
-		Information on debugging faults
-[8] https://community.arm.com/developer/ip-products/processors/f/cortex-m-forum/45919/gcc-does-not-generate-correct-code-while-building-pic
-[9] https://answers.launchpad.net/gcc-arm-embedded/+question/689355
+		ARM ELF specification. This document contains all the details about the ARM elf like relocation types, etc.  
+[4] https://www.airs.com/blog/archives/38  
+		20 part series on how linkers work  
+[5] https://stackoverflow.com/a/50701832  
+		Minimal example of creating GOT. Does not have PLT.  
+[6] http://www.chibios.com/forum/viewtopic.php?f=3&t=1229  
+		Explains different ways to achive dynamic module loading  
+[7] https://interrupt.memfault.com/blog/cortex-m-fault-debug  
+		Information on debugging faults  
+[8] https://community.arm.com/developer/ip-products/processors/f/cortex-m-forum/45919/gcc-does-not-generate-correct-code-while-building-pic  
+[9] https://answers.launchpad.net/gcc-arm-embedded/+question/689355  
 
