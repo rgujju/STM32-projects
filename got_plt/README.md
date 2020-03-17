@@ -197,6 +197,7 @@ int main ( void )
 
 
 The problem with ``0800010c``:
+
    In ARM cortex-M architecture when interworking addresses (bx & blx or ldr & ldm when loading a pc-relative value) are used for branches 
    the lowest bit is to be set to 1, to indicate thumb state else a INVSTATE fault will be generated [7]. The generated instruction ``0800010c``
    has its last bit as 0 which causes a fault at instruction ``8000114``. This maybe a bug in the gcc compiler [8] [9]. If I change ``0800010c``
