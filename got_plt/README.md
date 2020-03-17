@@ -210,20 +210,20 @@ int main ( void )
 section. As a consequence the location of variables were not accurate.
 
 ### References
-[1] https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries  
-		This is probably the holy grail of pic.  
-[2] http://infocenter.arm.com/help/topic/com.arm.doc.dai0242a/DAI0242A_dynamic_linking_with_rvct.pdf  
-		Explains what dynamic linking is and some details on how to implement it  
-[3] https://static.docs.arm.com/ihi0044/f/IHI0044F_aaelf.pdf  
-		ARM ELF specification. This document contains all the details about the ARM elf like relocation types, etc.  
-[4] https://www.airs.com/blog/archives/38  
-		20 part series on how linkers work  
-[5] https://stackoverflow.com/a/50701832  
-		Minimal example of creating GOT. Does not have PLT.  
-[6] http://www.chibios.com/forum/viewtopic.php?f=3&t=1229  
-		Explains different ways to achive dynamic module loading  
-[7] https://interrupt.memfault.com/blog/cortex-m-fault-debug  
-		Information on debugging faults  
-[8] https://community.arm.com/developer/ip-products/processors/f/cortex-m-forum/45919/gcc-does-not-generate-correct-code-while-building-pic  
-[9] https://answers.launchpad.net/gcc-arm-embedded/+question/689355  
+1. https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries  
+   - This is probably the holy grail of pic.  
+2. http://infocenter.arm.com/help/topic/com.arm.doc.dai0242a/DAI0242A_dynamic_linking_with_rvct.pdf  
+   - Explains what dynamic linking is and some details on how to implement it  
+3. https://static.docs.arm.com/ihi0044/f/IHI0044F_aaelf.pdf  
+   - ARM ELF specification. This document contains all the details about the ARM elf like relocation types, etc.  
+4. https://www.airs.com/blog/archives/38  
+   - 20 part series on how linkers work  
+5. https://stackoverflow.com/a/50701832  
+   - Minimal example of creating GOT. Does not have PLT.  
+6. http://www.chibios.com/forum/viewtopic.php?f=3&t=1229  
+   - Explains different ways to achive dynamic module loading  
+7. https://interrupt.memfault.com/blog/cortex-m-fault-debug  
+   - Information on debugging faults  
+8. https://community.arm.com/developer/ip-products/processors/f/cortex-m-forum/45919/gcc-does-not-generate-correct-code-while-building-pic  
+9. https://answers.launchpad.net/gcc-arm-embedded/+question/689355  
 
