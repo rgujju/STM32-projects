@@ -8,7 +8,8 @@
 - ``make got_only`` will make statically linked code with global and static data access through the GOT.
 - ``make got_plt`` will make code with global and static data access through the GOT and function calls through PLT. 
 					This code will not have the ``library_function`` in the output.
-
+- ``make got_plt_single`` will make got_plt code but with a single base register which is set manually (ie. not by compiler) 
+							prior to calling main.
 
 #### How GOT works
 - use ``make got_only`` to generate GOT.
