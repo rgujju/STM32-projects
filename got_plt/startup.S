@@ -81,6 +81,10 @@ reset_handler:
 		CMP  r1, r2
 		BCC  reset_bss
 
+	// For the single pic base option, we need to 
+	// initialize r9 with the GOT base address
+	LDR r9, =_sgot
+
     // And then branch off to main
     B main
 

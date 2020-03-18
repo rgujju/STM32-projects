@@ -129,6 +129,17 @@ got_plt:LFLAGS  += -L. $(DLIB_LFLAGS)
 got_plt: $(DLIBS_SO) $(TARGET).bin
 ################################################################
 
+####################### got_plt_single #########################
+# @Brief This target makes executable with global variables 
+# accessed through GOT and shared library functions through
+# the PLT. The GOT base is hardcoded in register r9.
+got_plt_single:ASFLAGS += -fPIC -msingle-pic-base -mpic-register=r9
+got_plt_single:CFLAGS  += -fPIC -msingle-pic-base -mpic-register=r9
+got_plt_single:LFLAGS  += -L. $(DLIB_LFLAGS)
+.PHONY: got_plt_single
+got_plt_single: $(DLIBS_SO) $(TARGET).bin
+################################################################
+
 ########################### clean ############################## 
 # @Brief Remove the target output files.
 .PHONY: clean

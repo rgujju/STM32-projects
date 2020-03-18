@@ -135,79 +135,104 @@ arm-none-eabi-objdump -Dz --source main.elf
 
 int main ( void )
 {
- 8000050:	b598      	push	{r3, r4, r7, lr}
- 8000052:	af00      	add	r7, sp, #0
- 8000054:	4c09      	ldr	r4, [pc, #36]	; (800007c <main+0x2c>)
- 8000056:	447c      	add	r4, pc
+ 8000058:	b598      	push	{r3, r4, r7, lr}
+ 800005a:	af00      	add	r7, sp, #0
+ 800005c:	4c09      	ldr	r4, [pc, #36]	; (8000084 <main+0x2c>)
+ 800005e:	447c      	add	r4, pc
  .
  .
  .
 	z=library_function(77);
- 800006c:	204d      	movs	r0, #77	; 0x4d
- 800006e:	f000 f855 	bl	800011c <.plt+0x10>
- 8000072:	4602      	mov	r2, r0
- 8000074:	4b04      	ldr	r3, [pc, #16]	; (8000088 <main+0x38>)
- 8000076:	58e3      	ldr	r3, [r4, r3]
- 8000078:	601a      	str	r2, [r3, #0]
+ 8000074:	204d      	movs	r0, #77	; 0x4d
+ 8000076:	f000 f855 	bl	8000124 <.plt+0x10>
+ 800007a:	4602      	mov	r2, r0
+ 800007c:	4b04      	ldr	r3, [pc, #16]	; (8000090 <main+0x38>)
+ 800007e:	58e3      	ldr	r3, [r4, r3]
+ 8000080:	601a      	str	r2, [r3, #0]
 
 	while(1){
- 800007a:	e7fe      	b.n	800007a <main+0x2a>
- 800007c:	1800002e 	stmdane	r0, {r1, r2, r3, r5}
- 8000080:	00000000 	andeq	r0, r0, r0
- 8000084:	00000008 	andeq	r0, r0, r8
- 8000088:	00000004 	andeq	r0, r0, r4
+ 8000082:	e7fe      	b.n	8000082 <main+0x2a>
+ 8000084:	18000026 	stmdane	r0, {r1, r2, r5}
+ 8000088:	00000000 	andeq	r0, r0, r0
+ 800008c:	00000008 	andeq	r0, r0, r8
+ 8000090:	00000004 	andeq	r0, r0, r4
  .
  .
  .
- Disassembly of section .plt:
+Disassembly of section .plt:
 
-0800010c <.plt>:
- 800010c:	b500      	push	{lr}
- 800010e:	f8df e008 	ldr.w	lr, [pc, #8]	; 8000118 <.plt+0xc>
- 8000112:	44fe      	add	lr, pc
- 8000114:	f85e ff08 	ldr.w	pc, [lr, #8]!
- 8000118:	17ffff7c 			; <UNDEFINED> instruction: 0x17ffff7c
- 800011c:	f64f 7c78 	movw	ip, #65400	; 0xff78
- 8000120:	f2c1 7cff 	movt	ip, #6143	; 0x17ff
- 8000124:	44fc      	add	ip, pc
- 8000126:	f8dc f000 	ldr.w	pc, [ip]
- 800012a:	e7fd      	b.n	8000128 <.plt+0x1c>
+08000114 <.plt>:
+ 8000114:	b500      	push	{lr}
+ 8000116:	f8df e008 	ldr.w	lr, [pc, #8]	; 8000120 <.plt+0xc>
+ 800011a:	44fe      	add	lr, pc
+ 800011c:	f85e ff08 	ldr.w	pc, [lr, #8]!
+ 8000120:	17ffff74 			; <UNDEFINED> instruction: 0x17ffff74
+ 8000124:	f64f 7c70 	movw	ip, #65392	; 0xff70
+ 8000128:	f2c1 7cff 	movt	ip, #6143	; 0x17ff
+ 800012c:	44fc      	add	ip, pc
+ 800012e:	f8dc f000 	ldr.w	pc, [ip]
+ 8000132:	e7fd      	b.n	8000130 <.plt+0x1c>
  .
  .
  .
- Disassembly of section .got.plt:
+Disassembly of section .got.plt:
 
 20000094 <_GLOBAL_OFFSET_TABLE_>:
 20000094:	20000000 	andcs	r0, r0, r0
 20000098:	00000000 	andeq	r0, r0, r0
 2000009c:	00000000 	andeq	r0, r0, r0
-200000a0:	0800010c 	stmdaeq	r0, {r2, r3, r8}
+200000a0:	08000114 	stmdaeq	r0, {r2, r4, r8}
 ```
 | Intruction | Description |
 | ---------- | ----------- |
-|  8000054   | load data at address ``800007c`` into r4. (pc (instruction address + 4) + #36(0x24) = 800007c) so r4 contains ``17ffffa6`` |
-|  8000056   | add pc to r4, so r4 contains ``20000000``, which is the base of the GOT |
-|  800006C   | move value #77 into r0 which is passed as argument to the function. |
-|  800006E   | branch to address ``800011c``, which is inside the PLT |
-|  800011c   | move ``0xff78`` to the lower 16 bits of ip |
-|  8000120   | move ``0x17ff`` to the upper 16 bits of ip, so IP contains ``17ffff78`` |
-|  8000124   | add ``8000124+0x4``(pc) + ``17ffff78``(ip) = ``200000A0``. which is the GOT for the PLT. This entry will be updated with the actual address by the dynamic linker |
-|  8000126   | branch to the value at address ``200000A0``, which is initially ``800010c``. This address is the first entry in the PLT which contains code for *lazy binding* and resolving the actual address of the function called. *The value ``800010c`` is likely wrong here, more on this below.*|
-|  800010c-8000114 | branch to the value at address ``2000009a``, which contains ``00000000`` currently. |
+|  800005c   | load data at address ``8000084`` into r4. (pc (instruction address + 4) + #36(0x24) = 8000084) so r4 contains ``18000026`` |
+|  800005e   | add pc to r4, so r4 contains ``20000088``, which is the base of the GOT |
+|  8000074   | move value #77 into r0 which is passed as argument to the library_function. |
+|  8000076   | branch to address ``8000124``, which is inside the PLT |
+|  8000124   | move ``0xff70`` to the lower 16 bits of ip |
+|  8000128   | move ``0x17ff`` to the upper 16 bits of ip, so IP contains ``17ffff78`` |
+|  800012c   | add ``800012c+0x4``(pc) + ``17ffff70``(ip) = ``200000A0``. which is the GOT for the PLT. This entry will be updated with the actual address by the dynamic linker |
+|  800012e   | branch to the value at address ``200000A0``, which is initially ``08000114``. This address is the first entry in the PLT which contains code for *lazy binding* and resolving the actual address of the function called. *The value ``08000114`` is likely wrong here, more on this below.*|
+|  8000114-800011c | *This part gives a fault* but if it didnt then it would branch to the value at address ``2000009a``, which contains ``00000000`` currently. |
 
 
-- The problem with ``0800010c``:
+- The problem with ``08000114``:
 
    In ARM cortex-M architecture when interworking addresses (bx & blx or ldr & ldm when loading a pc-relative value) are used for branches
-   the lowest bit is to be set to 1, to indicate thumb state else a INVSTATE fault will be generated [7]. The generated instruction ``0800010c``
-   has its last bit as 0 which causes a fault at instruction ``8000114``. This maybe a bug in the gcc compiler [8] [9]. If I change ``0800010c``
-   to ``0800010d`` using a hex editor then the branch works and we end up at ``00000000``.
+   the lowest bit is to be set to 1, to indicate thumb state else a INVSTATE fault will be generated [7]. The generated instruction ``08000114``
+   has its last bit as 0 which causes a fault at instruction ``08000114``. This maybe a bug in the gcc compiler [8] [9]. If I change ``08000114``
+   to ``08000115`` using a hex editor then the branch works and we end up at ``00000000``.
    
+
+### Single PIC base register
+- use ``make got_plt_single`` to generate PIC code with GOT and PLT, but the register used for the GOT base is the same and constant. 
+- The GOT base register defined by us needs to be initialized before calling the main function. See the startup.S file for this.
+
+| Single pic base | Normal |
+| ----------  | ----------- |
+| int main ( void )													| int main ( void ) 												|
+| {																	| {																	|
+|  8000050:	b580      	push	{r7, lr}							|  8000050:	b598      	push	{r3, r4, r7, lr} 					|
+|  8000052:	af00      	add	r7, sp, #0								|  8000052:	af00      	add	r7, sp, #0 								|
+|	x=7;															|  8000054:	4c09      	ldr	r4, [pc, #36]	; (800007c <main+0x2c>)	|
+|  8000054:	4b0a      	ldr	r3, [pc, #40]	; (8000080 <main+0x30>)	|  8000056:	447c      	add	r4, pc 									|
+|  8000056:	f859 3003 	ldr.w	r3, [r9, r3]						|  x=7; 															|
+
+> -msingle-pic-base  
+>  Treat the register used for PIC addressing as read-only, rather than loading it in the prologue for each function. 
+>  The runtime system is responsible for initializing this register with an appropriate value before execution begins.
+
+
+### Truly position independent code for accessing PLT
+- The code we created still accesses the PLT in a PC-relative way. Generation of PIC which accesses PLT through a offset to a base register is 
+  not supported according to [11] [12].
+
 ### Notes
 - In addition to the change in output sections in the linker script, the method for getting the ``_sidata`` global variable is changed. 
 ``_sidata`` is the LMA of the data section. This new method gives the correct LMA. If the previous method was used then there was another section
 (rel.dyn) being pushed in between the ``_sidata`` and the actual start of the .data section so there was always an offset in accessing the .data
 section. As a consequence the location of variables were not accurate.
+
 
 ### References
 1. https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries  
@@ -227,3 +252,5 @@ section. As a consequence the location of variables were not accurate.
 8. https://community.arm.com/developer/ip-products/processors/f/cortex-m-forum/45919/gcc-does-not-generate-correct-code-while-building-pic  
 9. https://answers.launchpad.net/gcc-arm-embedded/+question/689355  
 10. https://stackoverflow.com/questions/50655162/stm32-position-independent-binaries/50701832#50701832  
+11. https://answers.launchpad.net/gcc-arm-embedded/+question/669758  
+12 https://answers.launchpad.net/gcc-arm-embedded/+question/675869  

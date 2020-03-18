@@ -89,6 +89,7 @@ SECTIONS
     .got :
     {
         . = ALIGN(4);
+        _sgot = .;
         *(.got)
     } >RAM AT> FLASH
     
