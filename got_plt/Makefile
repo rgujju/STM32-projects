@@ -59,6 +59,8 @@ LSCRIPT = ./$(LD_SCRIPT)
 LFLAGS += -g
 LFLAGS += -nostdlib
 LFLAGS += -T$(LSCRIPT)
+LFLAGS += -Map $(TARGET).map
+LFLAGS += --print-memory-usage
 
 OBJS   += $(AS_SRC:.S=.o)
 OBJS   += $(C_SRC:.c=.o)
@@ -114,8 +116,9 @@ $(TARGET).bin: $(TARGET).elf $(TARGET).diss
 # accessed through GOT while procedure calls are direct
 got_only:ASFLAGS += -fPIC
 got_only:CFLAGS  += -fPIC
+got_only:LFLAGS  += $(DLIBS_O)
 .PHONY: got_only
-got_only:$(TARGET).bin
+got_only: $(DLIBS_O) $(TARGET).bin
 ################################################################
 
 ########################### got_plt ############################ 
@@ -146,7 +149,7 @@ got_plt_single: $(DLIBS_SO) $(TARGET).bin
 clean:
 	rm -f $(OBJS) $(DLIBS) $(DLIBS_O)
 	rm -f $(TARGET).elf $(TARGET).bin $(TARGET).list $(TARGET).srec
-	rm -f $(TARGET).diss
+	rm -f $(TARGET).diss $(TARGET).map
 ################################################################
 
 ########################### gdb ################################ 
